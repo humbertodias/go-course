@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/humbertodias/go-course/interfaces/model"
+	"github.com/humbertodias/go-course/intermediate/interfaces/model"
 )
 
 func main() {

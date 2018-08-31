@@ -2,10 +2,9 @@ package handler
 
 import (
 	"fmt"
+	"github.com/humbertodias/go-course/advanced/web-server/model"
 	"net/http"
 	"time"
-
-	"github.com/humbertodias/go-course/web-server/model"
 )
 
 // Hello model

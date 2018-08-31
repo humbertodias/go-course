@@ -1,31 +1,19 @@
 package main
 
 import (
-	"bytes"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"time"
 
-	"github.com/humbertodias/go-course/web-post/model"
+	"github.com/humbertodias/go-course/advanced/unmarshall/model"
 )
 
-// https://requestbin.fullcontact.com/
+// https://jsonplaceholder.typicode.com/
 func main() {
 
-	// user
-	user := model.User{}
-	user.ID = 1
-	user.Name = "Humberto"
-
-	sendContent, err := json.Marshal(user)
-	if err != nil {
-		fmt.Println("Erro no marshal do usuario. Error: ", err.Error())
-		return
-	}
-
-	request, err := http.NewRequest("POST", "http://requestbin.fullcontact.com/116vr5r1", bytes.NewBuffer(sendContent))
+	request, err := http.NewRequest("GET", "https://jsonplaceholder.typicode.com/todos/1", nil)
 	if err != nil {
 		fmt.Println("Erro ao abrir pagina do google. Error: ", err.Error())
 		return
@@ -50,7 +38,15 @@ func main() {
 			fmt.Println("Erro ao ler o conteudo resposta: ", err.Error())
 			return
 		}
-		fmt.Println(string(body))
+		// fmt.Println(string(body))
+		post := model.BlogPost{}
+		err = json.Unmarshal(body, &post)
+		if err != nil {
+			fmt.Println("Erro ao converter o retorno do servidor: ", err.Error())
+			return
+		}
+
+		fmt.Printf("Post é: %+v\r\n", post)
 	}
 
 }

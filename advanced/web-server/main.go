@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
+	"github.com/humbertodias/go-course/advanced/web-server/handler"
 	"net/http"
-
-	"github.com/humbertodias/go-course/web-server/handler"
 )
 
 func main() {
