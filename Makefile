@@ -60,3 +60,6 @@ start_mysql_and_mongodb:	mysql_start	mongodb_start	wait_containers	mongodb_impor
 
 docker_rm_all:
 	docker ps -qa | xargs -r docker rm -f
+
+clean:
+	rm -f myapp

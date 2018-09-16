@@ -36,8 +36,16 @@ go run fundamental/variables/main.go
 2. GoBuild
 
 ```
-go run intermediate/gobuild/main.go
+GOOS=linux go build -o myapp intermediate/gobuild/main.go
+./myapp
 ```
+eg.
+
+| GOOS | Platform |
+|------|----------|
+| Mac  | darwin   |
+| Win  | windows  |
+
 
 3. Array
 
@@ -173,4 +181,6 @@ http://localhost:8181/nosql/99
 [GoLang](https://golang.org)
 
 [Udemy GoLang Course](https://www.udemy.com/cursodego)
+
+[Go Build](https://golang.org/pkg/go/build)
 
