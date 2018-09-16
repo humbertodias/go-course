@@ -16,7 +16,7 @@ Following the course at https://www.udemy.com/cursodego
 ```sh
 mkdir -p ~/go/src/github.com/humbertodias && cd $_
 git clone https://github.com/humbertodias/go-course
-cd go-source
+cd go-course
 ```
 
 Resolve dependencies

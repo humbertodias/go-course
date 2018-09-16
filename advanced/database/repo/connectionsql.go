@@ -11,25 +11,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-/**
-Postgres
-
-// Server
-docker run \
--e POSTGRES_PASSWORD= \
--e POSTGRES_USER=root \
--e POSTGRES_DB=go-course \
--p 5432:5432 \
--d postgres
-
-// Client
-sudo apt install postgresql-client
-
-// Connecting
-psql -h localhost -p 5432 go-course root < ddl.sql
-psql -h localhost -p 5432 go-course root < dml.sql
-**/
-
 //variavel singleton que armazena a conexao
 var db *sqlx.DB
 
