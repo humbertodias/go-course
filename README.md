@@ -1,6 +1,6 @@
 # GoLang course
 
-Following the course at https://www.udemy.com/cursodego/
+Following the course at https://www.udemy.com/cursodego
 
 ## Clone
 
@@ -8,6 +8,15 @@ Following the course at https://www.udemy.com/cursodego/
 mkdir -p ~/go/src/github.com/humbertodias && cd $_
 git clone https://github.com/humbertodias/go-course
 ```
+
+## Requirements
+
+1. Go 1.8+
+2. Git
+3. Docker
+4. MySQL client
+5. MongoDB client
+
 
 ## Run
 
