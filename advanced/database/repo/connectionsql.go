@@ -1,9 +1,9 @@
 package repo
 
+/*
+github.com/go-sql-driver/mysql não é usado diretamente pela aplicação
+*/
 import (
-	/*
-		github.com/go-sql-driver/mysql não é usado diretamente pela aplicação
-	*/
 	"log"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -12,23 +12,7 @@ import (
 )
 
 /**
-
-// MySQL
-docker run \
--e MYSQL_ALLOW_EMPTY_PASSWORD=yes \
--e MYSQL_ROOT_PASSWORD= \
--e MYSQL_DATABASE=go-course \
--p 3306:3306 \
--d mysql
-
-// Client
-sudo apt install mysql-client
-
-// Connecting
-mysql -h localhost -P 3306 -D go-course -u root -p < ddl.sql
-mysql -h localhost -P 3306 -D go-course -u root -p < dml.sql
-
-or Postgres
+Postgres
 
 // Server
 docker run \

@@ -9,6 +9,7 @@ Following the course at https://www.udemy.com/cursodego
 3. Docker
 4. MySQL client
 5. MongoDB client
+6. Makefile
 
 ## Clone
 
@@ -21,8 +22,7 @@ cd go-source
 Resolve dependencies
 
 ```
-go get github.com/tools/godep
-godep get *
+make dep
 ```
 
 ## Run
@@ -144,14 +144,14 @@ docker run \
 Load
 
 ```
-mysql -h localhost -P 3306 -D go-course -u root < advanced/database/ddl.sql
-mysql -h localhost -P 3306 -D go-course -u root < advanced/database/dml.sql
+mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/ddl.sql
+mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/dml.sql
 ```
 
 ```
 mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course \
 --collection local \
---jsonArray --file advanced/database/places.json
+--jsonArray --file advanced/database/resources/places.json
 ```
 
 
