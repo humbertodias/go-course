@@ -7,7 +7,9 @@ import (
 )
 
 func main() {
-	file, err := os.Open("cidades.csv")
+
+	fullpath := "intermediate/files/reading/cidades.csv"
+	file, err := os.Open(fullpath)
 
 	if err != nil {
 		fmt.Println("[main] Houve um erro ao abrir o arquivo. Erro:", err.Error())

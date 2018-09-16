@@ -31,5 +31,4 @@ mongo "mongodb://go:go@127.0.0.1:27017/go-course"
 
 // Importing
 mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course --collection local --jsonArray --file places.json
-
 */

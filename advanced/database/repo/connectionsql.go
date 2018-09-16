@@ -53,8 +53,8 @@ var db *sqlx.DB
 func AbreConexaoComBancoDeDadosSQL() (db *sqlx.DB, err error) {
 	err = nil
 
-	//db, err = sqlx.Open("mysql", "root@tcp(localhost:3306)/go-course?parseTime=true")
-	db, err = sqlx.Open("postgres", "postgres://root@localhost/go-course?sslmode=disable")
+	db, err = sqlx.Open("mysql", "root@tcp(localhost:3306)/go-course?parseTime=true")
+	// db, err = sqlx.Open("postgres", "postgres://root@localhost/go-course?sslmode=disable")
 	if err != nil {
 		log.Println("[AbreConexaoComBancoDeDadosSQL] Erro na conexao: ", err.Error())
 		return

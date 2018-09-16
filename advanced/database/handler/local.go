@@ -10,19 +10,13 @@ import (
 	"github.com/humbertodias/go-course/advanced/database/repo"
 )
 
-//Local é o manipulador da requisição de rota /local/
-func Local(w http.ResponseWriter, r *http.Request) {
+//LocalSQL é o manipulador da requisição de rota /local/
+func LocalSQL(w http.ResponseWriter, r *http.Request) {
 
 	local := model.Local{}
-	codigoTelefone := r.URL.Path[7:]
-
-	// codigoTelefone, err := strconv.Atoi(parametroCodigoTelefone)
-	// if err != nil {
-	// 	http.Error(w, "Não foi enviado um numero válido. Verifique.", http.StatusBadRequest)
-	// 	fmt.Println("[local] erro ao converter o numero enviado: ", err.Error())
-	// 	return
-	// }
-
+	//sql/ = length 5
+	codigoTelefone := r.URL.Path[5:]
+	fmt.Printf("codigoTelefone: %s\n", codigoTelefone)
 	db, err := repo.GetDBConnection()
 	if err != nil {
 		log.Println("[Local] Erro na conexao: ", err.Error())
@@ -45,15 +39,7 @@ func Local(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	localMongo, err := repo.GetLocal(codigoTelefone)
-	if err != nil {
-		http.Error(w, "Não foi possível pesquisar esse numero.", http.StatusInternalServerError)
-		fmt.Println("[local] nao foi possível executar a query no MongoDB: ", sql, " Erro: ", err.Error())
-		return
-	}
-
-	// if err := ModeloLocal.ExecuteTemplate(w, "local.html", local); err != nil {
-	if err := ModeloLocal.ExecuteTemplate(w, "local.html", localMongo); err != nil {
+	if err := ModeloLocal.Execute(w, local); err != nil {
 		http.Error(w, "Houve um erro na renderização da página.", http.StatusInternalServerError)
 		fmt.Println("[local] Erro na execucao do modelo: ", err.Error())
 	}
@@ -69,6 +55,25 @@ func Local(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("[local] Erro ao pegar o numero de linhas afetadas pelo comando: ", sql, " - ", err.Error())
 	}
 
+	fmt.Println("Sucesso! ", linhasAfetadas, " linha(s) afetada(s)")
+}
+
+//LocalNoSQL é o manipulador da requisição de rota /local/
+func LocalNoSQL(w http.ResponseWriter, r *http.Request) {
+	//nosql/ = length 7
+	codigoTelefone := r.URL.Path[7:]
+	localMongo, err := repo.GetLocal(codigoTelefone)
+	if err != nil {
+		http.Error(w, "Não foi possível pesquisar esse numero.", http.StatusInternalServerError)
+		fmt.Println("[local] nao foi possível executar a query no MongoDB:", "Erro: ", err.Error())
+		return
+	}
+
+	if err := ModeloLocal.Execute(w, localMongo); err != nil {
+		http.Error(w, "Houve um erro na renderização da página.", http.StatusInternalServerError)
+		fmt.Println("[local] Erro na execucao do modelo: ", err.Error())
+	}
+
 	log := model.RegistroLog{}
 	log.DataVisita = time.Now().Format("02/01/2006 15:04:05")
 	err = repo.WriteLog(log)
@@ -76,5 +81,5 @@ func Local(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("[local] Erro na inclusao do log no MongoDB: ", err.Error())
 	}
 
-	fmt.Println("Sucesso! ", linhasAfetadas, " linha(s) afetada(s)")
+	fmt.Println("Sucesso!")
 }

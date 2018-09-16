@@ -5,14 +5,16 @@ import (
 	"encoding/csv"
 	"encoding/json"
 	"fmt"
-	"github.com/humbertodias/go-course/intermediate/files/model"
 	"os"
 	"strings"
+
+	"github.com/humbertodias/go-course/intermediate/files/model"
 )
 
 func main() {
 
-	arquivo, err := os.Open("cidades.csv")
+	fullpath := "intermediate/files/reading/cidades.csv"
+	arquivo, err := os.Open(fullpath)
 	if err != nil {
 		fmt.Println("[main] Houve um erro ao abrir o arquivo. Erro: ", err.Error())
 		return
@@ -26,7 +28,8 @@ func main() {
 		return
 	}
 
-	arquivoJSON, err := os.Create("cidades.json")
+	fullJSONPath := "intermediate/files/reading/cidades.json"
+	arquivoJSON, err := os.Create(fullJSONPath)
 	if err != nil {
 		fmt.Println("[main] Houve um erro ao criar o arquivo JSON. Erro: ", err.Error())
 		return
