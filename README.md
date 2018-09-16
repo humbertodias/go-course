@@ -7,9 +7,9 @@ Following the course at https://www.udemy.com/cursodego
 1. Git
 2. Go 1.8+
 3. Docker
-4. Makefile
-5. MySQL client
-6. MongoDB client
+4. MySQL client
+5. MongoDB client
+6. Makefile (Optional)
 
 ## Clone
 
@@ -22,7 +22,7 @@ cd go-course
 Resolve dependencies
 
 ```
-make dep
+go get -d ./...
 ```
 
 ## Run
@@ -183,4 +183,3 @@ http://localhost:8181/nosql/99
 [Udemy GoLang Course](https://www.udemy.com/cursodego)
 
 [Go Build](https://golang.org/pkg/go/build)
-
