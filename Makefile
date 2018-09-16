@@ -2,7 +2,6 @@ fmt:
 	go fmt ./...
 
 dep:
-	go get github.com/tools/godep
 	go get -d ./...
 
 # MySQL
@@ -34,7 +33,7 @@ mongodb_client_install:
 	sudo apt install mongo-tools
 
 mongodb_import:
-	mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course \
+	mongoimport --uri mongodb://go:go@localhost:27017/go-course \
 	--collection local \
 	--jsonArray --file advanced/database/resources/places.json
 
