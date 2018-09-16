@@ -17,8 +17,8 @@ mysql_client_install:
 	sudo apt install mysql-client
 
 mysql_import:
-	mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/ddl.sql
-	mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/dml.sql
+	mysql -h localhost -P 3306 -D go-course -u root --no-password < advanced/database/resources/ddl.sql
+	mysql -h localhost -P 3306 -D go-course -u root --no-password < advanced/database/resources/dml.sql
 
 # MongoDB
 mongodb_start:
