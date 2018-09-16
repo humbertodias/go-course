@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+
 	"github.com/humbertodias/go-course/advanced/database/handler"
 	"github.com/humbertodias/go-course/advanced/database/repo"
-	"net/http"
 )
 
 func init() {
@@ -14,6 +15,13 @@ func init() {
 		fmt.Println("Parando a carga do servidor. Erro ao abrir o banco de dados: ", err.Error())
 		return
 	}
+
+	err = repo.AbreConexaoComMongo()
+	if err != nil {
+		fmt.Println("Parando a carga do servidor. Erro ao abrir a sessao com o MongoDB: ", err.Error())
+		return
+	}
+
 }
 
 func main() {

@@ -1,0 +1,6 @@
+[
+    { country: "Brasil", city: "Guarulhos", telcode: "99" }, 
+    { country: "Spain", city: "Madrid", telcode: "99" }, 
+    { country: "Spain", city: "Madrid", telcode: "11" }, 
+    { country: "England", city: "London", telcode: "11" } 
+]
