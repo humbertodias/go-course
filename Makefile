@@ -62,4 +62,4 @@ docker_rm_all:
 	docker ps -qa | xargs -r docker rm -f
 
 clean:
-	rm -f myapp
+	rm -f myapp advanced/web-asm/main.wasm advanced/web-asm/wasm_exec.js

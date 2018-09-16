@@ -5,7 +5,7 @@ Following the course at https://www.udemy.com/cursodego
 ## Requirements
 
 1. Git
-2. Go 1.8+
+2. Go 1.11+
 3. Docker
 4. MySQL client
 5. MongoDB client
@@ -175,6 +175,22 @@ http://localhost:8181/sql/45
 http://localhost:8181/nosql/99
 
 
+16: Web ASM
+
+```
+cd advanced/web-asm
+GOOS=js GOARCH=wasm go build -o main.wasm
+cp $(go env GOROOT)/misc/wasm/wasm_exec.js .
+
+go get -u github.com/shurcooL/goexec
+goexec 'http.ListenAndServe(":8080", http.FileServer(http.Dir(".")))'
+```
+Then open the browser
+
+http://localhost:8080
+
+And check out the console.log
+
 
 # References
 
@@ -183,3 +199,5 @@ http://localhost:8181/nosql/99
 [Udemy GoLang Course](https://www.udemy.com/cursodego)
 
 [Go Build](https://golang.org/pkg/go/build)
+
+[Go WebASM](https://github.com/golang/go/wiki/WebAssembly)
