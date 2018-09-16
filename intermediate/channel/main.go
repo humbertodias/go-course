@@ -26,6 +26,9 @@ func impressora(canal chan string) {
 }
 
 func main() {
+
+	fmt.Println("Press any key to stop.")
+
 	var canal chan string
 	canal = make(chan string)
 	go pinger(canal)

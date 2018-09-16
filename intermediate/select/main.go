@@ -47,6 +47,9 @@ func impressora() {
 }
 
 func main() {
+
+	fmt.Println("Press any key to stop.")
+
 	go pinger(irc)
 	go ponger(irc)
 
