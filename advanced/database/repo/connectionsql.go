@@ -1,7 +1,8 @@
 package repo
 
 /*
-github.com/go-sql-driver/mysql não é usado diretamente pela aplicação
+github.com/go-sql-driver/mysql não é usado diretamente pela aplicação.
+por isso colocamos o underline antes _
 */
 import (
 	"log"

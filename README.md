@@ -4,12 +4,12 @@ Following the course at https://www.udemy.com/cursodego
 
 ## Requirements
 
-1. Go 1.8+
-2. Git
+1. Git
+2. Go 1.8+
 3. Docker
-4. MySQL client
-5. MongoDB client
-6. Makefile
+4. Makefile
+5. MySQL client
+6. MongoDB client
 
 ## Clone
 
@@ -149,11 +149,10 @@ mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/dm
 ```
 
 ```
-mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course \
+mongoimport --uri mongodb://go:go@localhost:27017/go-course \
 --collection local \
 --jsonArray --file advanced/database/resources/places.json
 ```
-
 
 Run
 
