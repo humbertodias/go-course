@@ -2,13 +2,6 @@
 
 Following the course at https://www.udemy.com/cursodego
 
-## Clone
-
-```sh
-mkdir -p ~/go/src/github.com/humbertodias && cd $_
-git clone https://github.com/humbertodias/go-course
-```
-
 ## Requirements
 
 1. Go 1.8+
@@ -17,6 +10,12 @@ git clone https://github.com/humbertodias/go-course
 4. MySQL client
 5. MongoDB client
 
+## Clone
+
+```sh
+mkdir -p ~/go/src/github.com/humbertodias && cd $_
+git clone https://github.com/humbertodias/go-course
+```
 
 ## Run
 
@@ -111,7 +110,7 @@ http://localhost:8081/hello
 
 http://localhost:8081/funcao
 
-15. DataBase
+15. DataBase (SQL/NoSQL)
 
 Start Server
 
@@ -142,7 +141,9 @@ mysql -h localhost -P 3306 -D go-course -u root < advanced/database/dml.sql
 ```
 
 ```
-mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course --collection local --jsonArray --file advanced/database/places.json
+mongoimport --uri mongodb://go:go@127.0.0.1:27017/go-course \
+--collection local \
+--jsonArray --file advanced/database/places.json
 ```
 
 
