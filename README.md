@@ -152,8 +152,8 @@ docker run \
 Load
 
 ```
-mysql -h localhost -P 3306 -D go-course -u root --no-password < advanced/database/resources/ddl.sql
-mysql -h localhost -P 3306 -D go-course -u root --no-password < advanced/database/resources/dml.sql
+mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/ddl.sql
+mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/dml.sql
 ```
 
 ```
