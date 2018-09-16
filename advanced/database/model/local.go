@@ -8,3 +8,8 @@ type Local struct {
 	City      sql.NullString `json:"city" db:"city"`
 	PhoneCode string         `json:"telcode" db:"telcode"`
 }
+
+// LogQuery armazena dados de query
+type LogQuery struct {
+	DateRequest string `json:"daterequest" db:"daterequest"`
+}

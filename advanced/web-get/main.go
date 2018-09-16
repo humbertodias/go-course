@@ -43,7 +43,7 @@ func main() {
 	if response.StatusCode == 200 {
 		body, err := ioutil.ReadAll(response.Body)
 		if err != nil {
-			fmt.Println("Erro na responsta: ", err.Error())
+			fmt.Println("Erro na resposta: ", err.Error())
 			return
 		}
 		fmt.Println("SECOND REQUEST")

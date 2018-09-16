@@ -2,33 +2,34 @@ package handler
 
 import (
 	"fmt"
-	"github.com/humbertodias/go-course/advanced/database/model"
-	"github.com/humbertodias/go-course/advanced/database/repo"
 	"log"
 	"net/http"
-	"strconv"
 	"time"
+
+	"github.com/humbertodias/go-course/advanced/database/model"
+	"github.com/humbertodias/go-course/advanced/database/repo"
 )
 
 //Local é o manipulador da requisição de rota /local/
 func Local(w http.ResponseWriter, r *http.Request) {
 
 	local := model.Local{}
-
-	codigoTelefone, err := strconv.Atoi(r.URL.Path[7:])
-	if err != nil {
-		http.Error(w, "Não foi enviado um numero válido. Verifique.", http.StatusBadRequest)
-		fmt.Println("[local] erro ao converter o numero enviado: ", err.Error())
-		return
-	}
+	parametroCodigoTelefone := r.URL.Path[7:]
+	// codigoTelefone, err := strconv.Atoi(parametroCodigoTelefone)
+	// if err != nil {
+	// 	http.Error(w, "Não foi enviado um numero válido. Verifique.", http.StatusBadRequest)
+	// 	fmt.Println("[local] erro ao converter o numero enviado: ", err.Error())
+	// 	return
+	// }
 
 	db, err := repo.GetDBConnection()
 	if err != nil {
 		log.Println("[Local] Erro na conexao: ", err.Error())
 		return
 	}
-	sql := "select country, city, telcode from place where telcode = ?"
-	linha, err := db.Queryx(sql, codigoTelefone)
+	p := model.Local{PhoneCode: parametroCodigoTelefone}
+	sql := "select country, city, telcode from place where telcode = :telcode"
+	linha, err := db.NamedQuery(sql, p)
 	if err != nil {
 		http.Error(w, "Não foi possível pesquisar esse numero.", http.StatusInternalServerError)
 		fmt.Println("[local] nao foi possível executar a query: ", sql, " Erro: ", err.Error())
@@ -46,8 +47,10 @@ func Local(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Houve um erro na renderização da página.", http.StatusInternalServerError)
 		fmt.Println("[local] Erro na execucao do modelo: ", err.Error())
 	}
-	sql = "insert into logquery (daterequest) values (?)"
-	resultado, err := db.Exec(sql, time.Now().Format("02/01/2006 15:04:05"))
+	sql = "insert into logquery (daterequest) values (:daterequest)"
+	daterequest := time.Now().Format("02/01/2006 15:04:05")
+	plq := model.LogQuery{DateRequest: daterequest}
+	resultado, err := db.NamedExec(sql, plq)
 	if err != nil {
 		fmt.Println("[local] Erro na inclusao do log: ", sql, " - ", err.Error())
 	}
