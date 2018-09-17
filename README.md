@@ -191,6 +191,8 @@ http://localhost:8080
 
 And check out the console.log
 
+![](doc/web-asm-console.png)
+
 
 # References
 
