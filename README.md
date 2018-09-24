@@ -65,6 +65,12 @@ go run intermediate/slice/main.go
 go run intermediate/files/reading/main.go
 ```
 
+5.1 File - SwfHeader
+
+```
+go run intermediate/files/swf/main.go intermediate/files/swf/race.swf
+```
+
 6. File - Writing
 
 ```

@@ -26,9 +26,16 @@ func (swfHeader SwfHeader) String() string {
 
 // https://wwwimages2.adobe.com/content/dam/acom/en/devnet/pdf/swf-file-format-spec.pdf
 func main() {
-	path := "race.swf"
 
-	file, err := os.Open(path)
+	fmt.Println(len(os.Args))
+	if len(os.Args) <= 1 {
+		panic("Usage main.go file.swf")
+	}
+
+	argsWithoutProg := os.Args[1:]
+	swfPath := argsWithoutProg[0]
+
+	file, err := os.Open(swfPath)
 	if err != nil {
 		log.Fatal("Error while opening file", err)
 	}
