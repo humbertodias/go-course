@@ -12,10 +12,10 @@ import (
 	_ "github.com/lib/pq"
 )
 
-//variavel singleton que armazena a conexao
+// variavel singleton que armazena a conexao
 var db *sqlx.DB
 
-//AbreConexaoComBancoDeDadosSQL funcao que abre a conexao com o banco MYSQL
+// AbreConexaoComBancoDeDadosSQL funcao que abre a conexao com o banco MYSQL
 func AbreConexaoComBancoDeDadosSQL() (db *sqlx.DB, err error) {
 	err = nil
 
@@ -33,7 +33,7 @@ func AbreConexaoComBancoDeDadosSQL() (db *sqlx.DB, err error) {
 	return
 }
 
-//GetDBConnection Obtem a conexao com o banco de dados
+// GetDBConnection Obtem a conexao com o banco de dados
 func GetDBConnection() (localdb *sqlx.DB, err error) {
 	if db == nil {
 		db, err = AbreConexaoComBancoDeDadosSQL()

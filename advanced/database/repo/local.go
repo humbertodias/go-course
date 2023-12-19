@@ -2,23 +2,20 @@ package repo
 
 import (
 	"github.com/humbertodias/go-course/advanced/database/model"
-	"gopkg.in/mgo.v2/bson"
+	"go.mongodb.org/mongo-driver/bson"
 )
 
 // GetLocal retorna um local do MongoDB
 func GetLocal(codigoTelefone string) (local model.Local, err error) {
-	session := SessionMongo.Copy()
-	defer session.Close()
-	collection := session.DB("go-course").C("local")
-	err = collection.Find(bson.M{"telcode": codigoTelefone}).One(&local)
+	collection := mongoClient.Database("go-course").Collection("local")
+	filter := bson.M{"telcode": codigoTelefone}
+	err = collection.FindOne(ctx, filter).Decode(&local)
 	return
 }
 
 // WriteLog Salva Log
 func WriteLog(reg model.RegistroLog) (err error) {
-	session := SessionMongo.Copy()
-	defer session.Close()
-	collection := session.DB("go-course").C("logvisitas")
-	err = collection.Insert(reg)
+	collection := mongoClient.Database("go-course").Collection("logvisitas")
+	_, err = collection.InsertOne(ctx, reg)
 	return
 }

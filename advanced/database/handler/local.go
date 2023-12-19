@@ -10,7 +10,7 @@ import (
 	"github.com/humbertodias/go-course/advanced/database/repo"
 )
 
-//LocalSQL é o manipulador da requisição de rota /local/
+// LocalSQL é o manipulador da requisição de rota /local/
 func LocalSQL(w http.ResponseWriter, r *http.Request) {
 
 	local := model.Local{}
@@ -58,7 +58,7 @@ func LocalSQL(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Sucesso! ", linhasAfetadas, " linha(s) afetada(s)")
 }
 
-//LocalNoSQL é o manipulador da requisição de rota /local/
+// LocalNoSQL é o manipulador da requisição de rota /local/
 func LocalNoSQL(w http.ResponseWriter, r *http.Request) {
 	//nosql/ = length 7
 	codigoTelefone := r.URL.Path[7:]
