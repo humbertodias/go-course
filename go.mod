@@ -1,0 +1,11 @@
+module go-course
+
+go 1.21.4
+
+require (
+	github.com/go-sql-driver/mysql v1.7.1
+	github.com/humbertodias/go-course v0.0.0-20180924181259-25a5dff9749c
+	github.com/jmoiron/sqlx v1.3.5
+	github.com/lib/pq v1.10.9
+	gopkg.in/mgo.v2 v2.0.0-20190816093944-a6b53ec6cb22
+)

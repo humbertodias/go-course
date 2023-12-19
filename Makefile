@@ -15,6 +15,7 @@ mysql_start:
 
 mysql_client_install:
 	sudo apt install mysql-client
+	# brew install mysql-client
 
 mysql_import:
 	mysql -h localhost -P 3306 -D go-course -u root < advanced/database/resources/ddl.sql
@@ -31,6 +32,7 @@ mongodb_start:
 
 mongodb_client_install:
 	sudo apt install mongo-tools
+	# brew install mongodb/brew/mongodb-database-tools
 
 mongodb_import:
 	mongoimport --uri mongodb://go:go@localhost:27017/go-course \
